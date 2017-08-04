@@ -1,0 +1,6 @@
+name: The_Pit
+items:
+  rock:
+    desc: A rock
+  stick:
+    desc: A stick

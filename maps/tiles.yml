@@ -1,0 +1,5 @@
+name: base
+tiles:
+  global:
+    desc: Global tile
+    collider: False

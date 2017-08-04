@@ -1,0 +1,22 @@
+extends: /
+name: The_Pit/
+tiles:
+  floor1:
+      desc: you look around the dimly lit mineshaft and see the silohuettes of pillars and walls
+      collider: False
+      items:
+        - item: rock
+          spawnChance: 50
+          maxCount: 10
+        - item: stick
+          spawnChance: 50
+          maxCount: 5
+  pillar1: 
+      desc: a structure pillar blocks your way, go around
+      collider: True
+  wall1: 
+      desc: the hard shale rock wall blocks your path
+      collider: True
+  mineshaft:
+      desc: the floor is coverd in moss and a dim mineshaft spirals off into darkness
+      collider: False

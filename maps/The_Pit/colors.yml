@@ -1,0 +1,5 @@
+colors:
+  '000000': floor1
+  00ff00: pillar1
+  0000ff: wall1
+  ff0000: mineshaft
