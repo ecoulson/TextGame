@@ -20,3 +20,10 @@ tiles:
   mineshaft:
       desc: the floor is coverd in moss and a dim mineshaft spirals off into darkness
       collider: False
+      items: 
+        - item: extinguished torch
+          spawnChance: 100
+          maxCount: 1
+        - item: coal
+          spawnChance: 15
+          maxCount: 3

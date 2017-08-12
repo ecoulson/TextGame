@@ -1,0 +1,25 @@
+Move
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Usages:
+    - move
+        this signifies that a user would like to move from a tile but has not determined which direction.
+        The game will then prompt the player for a direction in which to move. The game then attempts to
+        move the player.
+
+    - move [direction (North | East | South | West)]
+        This command siginifes that the player would like to move and in which direction. The game then
+        attempts to move the player in the passed direction. The direction you would like to move can also
+        be reduced down to only the first letter in the direction. For example N -> North. So [move n] moves
+        to the north
+
+Results:
+    The result of any move command results in either the player moving in the specified direction,
+    or a collision occurs. When a collision occurs it is siginified in red text showing that there
+    has been a collision. Otherwise the player will move in the passed direction and the game will
+    display a success message.
+
+Notes:
+    The player may also world wrap, meaning that the world exists on a torus that would techincally 
+    break if gravity was a thing. Thankfully its a text based video game so we dont have to worry 
+    about our world crumbiling. Besides via dragons. They can sometimes cause cataclysms
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

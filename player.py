@@ -11,6 +11,8 @@ class Player():
 
         self.x = x
         self.y = y
+        self.inventoryCount = {}
+        self.inventory = []
         self.setStats()
         self.defaultCharacteristics()
         self.selectDwarf()
@@ -32,6 +34,13 @@ class Player():
     def move(self, x, y):
         self.x = x
         self.y = y
+
+    def displayInventory(self):
+        print("Inventory\n-=-=-=-=-=-")
+        if not self.inventoryCount:
+            print("Nothing in inventory")
+        for item in self.inventoryCount:
+            print("{} {}x".format(capitalize(item), self.inventoryCount[item]))
 
     def defaultCharacteristics(self):
         self.hairColor = "Black"
@@ -386,3 +395,7 @@ self.strTraits()+
 def clear():
     os.system('cls')
     os.system('clear')
+
+def capitalize(data):
+    data = str(data)
+    return data[0:1].upper() + data[1:len(data)]

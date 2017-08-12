@@ -84,7 +84,7 @@ class Map():
                 collider = tileData['collider']
                 mapTile = MapTile(x, y, desc, collider)
                 if 'items' in tileData:
-                    mapTile.spawnItems(tileData['items'])
+                    mapTile.spawnItems(tileData['items'], self.itemMap)
                 mapRow.append(mapTile)
     
     def getTile(self, x, y):
@@ -99,23 +99,31 @@ class MapTile():
         self.x = x
         self.y = y
         self.collider = isCollider
-        self.items = {}
+        self.items = []
+        self.itemCounts = {}
 
-    def spawnItems(self, items):
+    def spawnItems(self, items, itemMap):
         for item in items:
             chance = math.floor(random.random() * 100)
             if (chance <= item['spawnChance']):
                 count = math.floor(random.random() * item['maxCount']) + 1
-                key = item['item'].lower()
-                self.items[key] = count
+                key = item['item']
+                data = itemMap[key]
+                for i in range(0, count):
+                    obj = Item(key, data['desc'])
+                    if key in self.itemCounts:
+                        self.itemCounts[key] += 1
+                    else:
+                        self.itemCounts[key] = 1
+                    self.items.append(obj)
     
     def listItems(self):
         if len(self.items) == 0:
             print("No items are on this tile")
             return None
         print("Items\n-=+=-")
-        for item in self.items:
-            print("{} x{}".format(capitalize(item), self.items[item]))
+        for data in self.itemCounts:
+            print("{} x{}".format(capitalize(data), self.itemCounts[data]))
 
     def __str__(self):
         return "{}".format(self.desc)

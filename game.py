@@ -3,6 +3,7 @@ import sys
 from world import World
 from menu import Menu
 from enum import Enum
+from pyfiglet import figlet_format
 
 class InitState(Enum):
     LOAD = 1
@@ -35,7 +36,7 @@ def mainMenu():
     menuActions = ["Create Game", "Load Game", "Settings", "Quit"]
     menuHotKeys = [1,2,3,"Q"]
     menuCallbacks = [createGame, loadGame, settings, quit]
-    menu = Menu("Game Title", menuActions, menuHotKeys, menuCallbacks)
+    menu = Menu(figlet_format("Game Title", "roman"), menuActions, menuHotKeys, menuCallbacks)
     menu.display()
     activeMenu = menu
 

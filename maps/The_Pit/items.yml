@@ -1,6 +1,10 @@
 name: The_Pit
 items:
   rock:
-    desc: A rock
+    desc: A plain rock
   stick:
-    desc: A stick
+    desc: A wooden stick from a tree
+  extinguished torch:
+    desc: Need something to relight the torch
+  coal:
+    desc: A hunk of coal
