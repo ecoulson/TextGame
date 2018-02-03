@@ -16,14 +16,19 @@ class Map():
         self.map = []
         self.name = name
         self.font = font
+
         mapFile = Image.open(dir_path + mapDirPath + "/map.png")
         colorFile = open(dir_path + mapDirPath + "/colors.yml", "r")
         itemsFile = open(dir_path + mapDirPath + "/items.yml", "r")
         tileFile = open(dir_path + mapDirPath + "/tiles.yml", "r")
+
         self.createTileMap(tileFile)
         self.loadColors(colorFile)
         self.loadItems(itemsFile)
         self.loadMap(mapFile)
+
+    def serialize(self):
+        return self
 
     def printName(self):
         print(figlet_format(self.name, self.font))

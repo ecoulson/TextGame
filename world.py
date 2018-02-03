@@ -1,13 +1,16 @@
+import os
 import sys
 from player import Player
 from map import Map
 from colorama import init
 init(strip = not sys.stdout.isatty())
 from termcolor import cprint
+import pickle
 
 class World():
     def __init__ (self):
         self.player = Player(1,1)
+        self.map = None
         self.loadStartMap()
 
     def loadStartMap(self):
@@ -23,6 +26,9 @@ class World():
             error()
         else:
             error()
+
+    def serialize(self):
+        return self
 
     def start(self):
         self.map.printName()
@@ -50,9 +56,27 @@ class World():
         elif "drop" in args[0]:
             self.commandDrop(args)
         elif "help" in args[0]:
-            self.commandHelp(args);
+            self.commandHelp(args)
+        elif "save" in args[0]:
+            self.commandSave(args)
+        elif "exit" in args[0]:
+            self.commandSave(args)
+            self.commandExit(args)
         else:
             print("Unrecognized Command")
+
+    def commandExit(self, args):
+        print("Exiting...")
+        os.system("cls")
+        os.system("clear")
+        sys.exit()
+
+    def commandSave(self, args):
+        print("Saving game file...")
+        saveName = self.getInput("Enter save name")
+        with open("saves/{}.dat".format(saveName), 'wb') as file:
+            pickle.dump(self.serialize(), file, protocol=2)
+
 
     def commandMove(self, args):
         collision = False
@@ -100,7 +124,7 @@ class World():
         i = 0
         originalCount = count
         while i < len(items):
-            if items[i].name == itemStr.strip() and count >= 0:
+            if items[i].name == itemStr.strip() and count > 0:
                 if items[i].name in self.player.inventoryCount:
                     if self.player.inventoryCount[items[i].name] < 100:
                         self.player.inventoryCount[items[i].name] += 1
@@ -146,7 +170,7 @@ class World():
         i = 0
         originalCount = count
         while (i < len(items)):
-            if items[i].name == itemStr.strip() and count >= 0:
+            if items[i].name == itemStr.strip() and count > 0:
                 if items[i].name in tile.itemCounts:
                     tile.itemCounts[items[i].name] += 1
                 else:
@@ -176,9 +200,13 @@ class World():
                 cprint("{}: ".format(data[0].strip().lower()), 'green')
                 print("{}".format(data[1].strip().lower()))
         else:
-            commandHelp = open('./commands/{}.txt'.format(args[1]), 'r')
-            for line in commandHelp:
-                print(line[0:len(line) - 1])
+            try:
+                commandHelp = open('./commands/{}.txt'.format(args[1]), 'r')
+                for line in commandHelp:
+                    print(line[0:len(line) - 1])
+            except:
+                print("No extra help for command: {}".format(args[1]))
+            
 
     def move(self, dir):
         x = self.player.x

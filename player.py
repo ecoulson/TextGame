@@ -13,6 +13,7 @@ class Player():
         self.y = y
         self.inventoryCount = {}
         self.inventory = []
+
         self.setStats()
         self.defaultCharacteristics()
         self.selectDwarf()
@@ -30,6 +31,9 @@ class Player():
             self.updateStats()
             clear()
         clear()
+
+    def serialize(self):
+        return self
 
     def move(self, x, y):
         self.x = x

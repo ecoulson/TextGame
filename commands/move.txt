@@ -12,6 +12,11 @@ Usages:
         be reduced down to only the first letter in the direction. For example N -> North. So [move n] moves
         to the north
 
+Examples:
+    - move          (executes move command, user will be prompted to enter a direction)
+    - move East     (moves East)
+    - move s        (moves South)
+
 Results:
     The result of any move command results in either the player moving in the specified direction,
     or a collision occurs. When a collision occurs it is siginified in red text showing that there
@@ -21,5 +26,5 @@ Results:
 Notes:
     The player may also world wrap, meaning that the world exists on a torus that would techincally 
     break if gravity was a thing. Thankfully its a text based video game so we dont have to worry 
-    about our world crumbiling. Besides via dragons. They can sometimes cause cataclysms
+    about our world crumbiling. Besides via dragons, They can sometimes cause cataclysms
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
