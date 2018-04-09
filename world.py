@@ -17,7 +17,7 @@ class World():
         if (self.player.race.lower() == "human"):
             error()
         elif (self.player.race.lower() == "dwarf"):
-            self.map = Map("The_Pit", "The Pit", "poison")
+            self.map = Map("The_Pit", "The Pit")
         elif (self.player.race.lower() == "elf"):
             error()
         elif (self.player.race.lower() == "troll"):
@@ -107,8 +107,7 @@ class World():
         if len(items) == 0:
             print("No items on this tile")
             return None
-        
-        if len(args) == 1:
+        elif len(args) == 1:
             tile.listItems()
             print("")
             itemStr = self.getInput("What Item?").lower()

@@ -9,13 +9,12 @@ from PIL import Image
 dir_path = os.path.dirname(os.path.realpath(__file__)) + "/maps/"
 
 class Map():
-    def __init__(self, mapDirPath, name, font):
+    def __init__(self, mapDirPath, name):
         self.tileMap = {}
         self.colorMap = {}
         self.itemMap = {}
         self.map = []
         self.name = name
-        self.font = font
 
         mapFile = Image.open(dir_path + mapDirPath + "/map.png")
         colorFile = open(dir_path + mapDirPath + "/colors.yml", "r")
@@ -44,6 +43,8 @@ class Map():
                     if not name in extends:
                         self.createTileMap(open(dir_path + extends + "/tiles.yml", "r"))
                         self.loadColors(open(dir_path + extends + "/colors.yml", "r"))
+                if 'font' in data:
+                    self.font = data['font']
                 for tile in tiles:
                     self.tileMap[tile] = tiles[tile]
             except yaml.YAMLError as exc:

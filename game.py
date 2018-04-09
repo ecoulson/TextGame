@@ -43,7 +43,7 @@ def play():
             if possibleFile == name.split('.')[0]:
                 file = open('./saves/{}.dat'.format(possibleFile), 'rb')
                 world = pickle.load(file)
-
+                clear()
     world.start()
 
 def mainMenu():

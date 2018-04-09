@@ -1,5 +1,6 @@
 extends: /
 name: The_Pit/
+font: poison
 tiles:
   floor1:
       desc: you look around the dimly lit mineshaft and see the silohuettes of pillars and walls

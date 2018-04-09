@@ -3,3 +3,6 @@ look: Lists all items on the players tile
 take: Takes an item from the tile your player is currently on
 drop: Drops an item onto the tile your player is currently on
 inventory: Lists all items in your players inventory
+save: Saves the current world
+exit: Saves and quits the current world and game
+stats: Displays characters current stats
