@@ -3,6 +3,7 @@ name: The_Pit/
 font: poison
 tiles:
   floor1:
+      icon: " "
       desc: you look around the dimly lit mineshaft and see the silohuettes of pillars and walls
       collider: False
       items:
@@ -13,12 +14,15 @@ tiles:
           spawnChance: 50
           maxCount: 5
   pillar1: 
+      icon: "I"
       desc: a structure pillar blocks your way, go around
       collider: True
   wall1: 
+      icon: "|"
       desc: the hard shale rock wall blocks your path
       collider: True
   mineshaft:
+      icon: "X"
       desc: the floor is coverd in moss and a dim mineshaft spirals off into darkness
       collider: False
       items: 
